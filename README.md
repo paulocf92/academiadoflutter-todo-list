@@ -1,16 +1,6 @@
-# todo_list_provider
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Structure
+  - app/core - utility, code shared across the app.
+  - app/models - models used across the app.
+  - app/modules - the actual modules used in the app (auth, home, splash, etc).
+  - app/repositories - classes that handle database interaction with various data sources (firebase, sqlite, etc).
+  - app/services - classes that deliver data manipulation to repositories.
