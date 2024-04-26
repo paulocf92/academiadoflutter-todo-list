@@ -40,6 +40,14 @@ class _AppWidgetState extends State<AppWidget> {
               ],
               child: LoginPage(),
             ),
+        '/register': (_) => MultiProvider(
+              providers: [
+                Provider(create: (_) => 'Repository'),
+                Provider(create: (_) => 'Service'),
+                ChangeNotifierProvider(create: (_) => LoginController()),
+              ],
+              child: LoginPage(),
+            ),
       },
       home: SplashPage(),
     );
