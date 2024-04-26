@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_list_provider/app/core/database/sqlite_adm_connection.dart';
+import 'package:todo_list_provider/app/modules/auth/login/login_controller.dart';
+import 'package:todo_list_provider/app/modules/auth/login/login_page.dart';
 import 'package:todo_list_provider/app/modules/splash/splash_page.dart';
 
 class AppWidget extends StatefulWidget {
@@ -28,6 +31,16 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Todo List Provider',
+      routes: {
+        '/login': (_) => MultiProvider(
+              providers: [
+                Provider(create: (_) => 'Repository'),
+                Provider(create: (_) => 'Service'),
+                ChangeNotifierProvider(create: (_) => LoginController()),
+              ],
+              child: LoginPage(),
+            ),
+      },
       home: SplashPage(),
     );
   }
