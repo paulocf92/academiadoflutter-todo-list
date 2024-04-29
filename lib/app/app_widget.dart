@@ -29,6 +29,10 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Todo List Provider',
+      theme: ThemeData(
+        useMaterial3: false,
+        primarySwatch: Colors.blue,
+      ),
       routes: {
         ...AuthModule().routes,
       },
