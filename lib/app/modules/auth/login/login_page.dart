@@ -19,7 +19,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(height: 10),
+                    SizedBox(height: 40),
                     TodoListLogo(),
                   ],
                 ),
