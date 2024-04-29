@@ -11,7 +11,10 @@ class TodoListField extends StatelessWidget {
     required this.label,
     this.obscureText = false,
     this.suffixIconButton,
-  });
+  }) : assert(
+          obscureText == true ? suffixIconButton == null : true,
+          'obscureText cannot be used together with suffixIconButton',
+        );
 
   @override
   Widget build(BuildContext context) {
