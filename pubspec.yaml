@@ -1,19 +1,21 @@
 name: todo_list_provider
 description: "A new Flutter project."
-publish_to: 'none' 
+publish_to: "none"
 version: 1.0.0+1
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: ">=3.3.3 <4.0.0"
 dependencies:
   flutter:
     sdk: flutter
-  
+
   provider: ^6.1.2
   sqflite: ^2.3.3
   path: ^1.9.0
   google_fonts: ^6.2.1
   sign_in_button: ^3.2.0
   cupertino_icons: ^1.0.6
+  firebase_auth: ^5.1.0
+  firebase_core: ^3.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
