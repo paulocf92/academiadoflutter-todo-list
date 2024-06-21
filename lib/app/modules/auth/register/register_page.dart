@@ -25,9 +25,8 @@ class _RegisterPageState extends State<RegisterPage> {
     _emailEC.dispose();
     _passwordEC.dispose();
     _confirmPasswordEC.dispose();
-    super.dispose();
-
     context.read<RegisterController>().removeListener(() {});
+    super.dispose();
   }
 
   @override
