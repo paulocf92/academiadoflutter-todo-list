@@ -34,7 +34,12 @@ class _RegisterPageState extends State<RegisterPage> {
     super.initState();
     final defaultListener = DefaultListenerNotifier(
         changeNotifier: context.read<RegisterController>());
-    defaultListener.listener(context: context);
+    defaultListener.listener(
+      context: context,
+      successCallback: (notifier, listenerInstance) {
+        Navigator.of(context).pop();
+      },
+    );
   }
 
   @override
