@@ -10,7 +10,7 @@ class AuthModule extends TodoListModule {
       : super(
           bindings: [
             ChangeNotifierProvider(
-              create: (_) => LoginController(),
+              create: (context) => LoginController(userService: context.read()),
             ),
             // Pull userService from the context, as it was defined in the app module
             ChangeNotifierProvider(
