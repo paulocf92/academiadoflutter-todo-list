@@ -53,6 +53,9 @@ class UserRepositoryImpl implements UserRepository {
     } on FirebaseAuthException catch (e, s) {
       print(e);
       print(s);
+      if (e.code == 'invalid-credential') {
+        throw AuthException(message: 'Invalid email or password.');
+      }
       throw AuthException(message: e.message ?? 'Error when loggin in.');
     }
   }
