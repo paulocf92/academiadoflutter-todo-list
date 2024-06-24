@@ -19,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailEC = TextEditingController();
   final _passwordEC = TextEditingController();
+  final _emailFocus = FocusNode();
 
   @override
   void initState() {
@@ -26,6 +27,13 @@ class _LoginPageState extends State<LoginPage> {
     DefaultListenerNotifier(changeNotifier: context.read<LoginController>())
         .listener(
       context: context,
+      everCallback: (notifier, listenerInstance) {
+        if (notifier is LoginController) {
+          if (notifier.hasInfo) {
+            Messages.of(context).showInfo(notifier.infoMessage!);
+          }
+        }
+      },
       successCallback: (notifier, listenerInstance) {
         print('Login successful');
       },
@@ -63,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                                 Validatorless.required('Email is required'),
                                 Validatorless.email('Invalid email'),
                               ]),
+                              focusNode: _emailFocus,
                             ),
                             const SizedBox(height: 20),
                             TodoListField(
@@ -82,8 +91,11 @@ class _LoginPageState extends State<LoginPage> {
                                 TextButton(
                                   onPressed: () {
                                     if (_emailEC.text.isNotEmpty) {
-                                      // ForgotPasswordScreen
+                                      context
+                                          .read<LoginController>()
+                                          .forgotPassword(_emailEC.text);
                                     } else {
+                                      _emailFocus.requestFocus();
                                       Messages.of(context).showError(
                                           'Type an email to recover password!');
                                     }
