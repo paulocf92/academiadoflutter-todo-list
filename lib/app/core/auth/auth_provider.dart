@@ -18,6 +18,8 @@ class AuthProvider extends ChangeNotifier {
   void loadListener() {
     _firebaseAuth.userChanges().listen((_) => notifyListeners());
     _firebaseAuth.idTokenChanges().listen((user) async {
+      // Whenever user changes auth state (logout, login) this listener is called
+      // It will automatically resolve firebase auth and push to the correct screen
       await Future.delayed(const Duration(milliseconds: 500));
       if (user != null) {
         TodoListNavigator.to.pushNamedAndRemoveUntil('/home', (route) => false);
