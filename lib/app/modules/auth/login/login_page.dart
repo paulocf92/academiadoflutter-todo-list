@@ -148,7 +148,10 @@ class _LoginPageState extends State<LoginPage> {
                             const SizedBox(height: 30),
                             SignInButton(
                               Buttons.google,
-                              onPressed: () {},
+                              text: 'Continue with Google',
+                              onPressed: () {
+                                context.read<LoginController>().googleLogin();
+                              },
                               padding: const EdgeInsets.all(5),
                               shape: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
