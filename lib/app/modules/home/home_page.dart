@@ -15,8 +15,24 @@ class HomePage extends StatelessWidget {
   // It's automatically available in StatefulWidgets
   void _goToCreateTask(BuildContext context) {
     Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => TasksModule().getPage('/task/create', context),
+      PageRouteBuilder(
+        // Animation play duration
+        transitionDuration: Duration(milliseconds: 400),
+        // Animation structure
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          // Replace animation by a curved, quad-eased-in curve
+          animation =
+              CurvedAnimation(parent: animation, curve: Curves.easeInQuad);
+          // It will play out in a curve fashion, and at the same time in a scale, growing from the bottom right
+          return ScaleTransition(
+            scale: animation,
+            alignment: Alignment.bottomRight,
+            child: child,
+          );
+        },
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return TasksModule().getPage('/task/create', context);
+        },
       ),
     );
   }
