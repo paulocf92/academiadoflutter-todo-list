@@ -26,6 +26,7 @@ class TaskCreatePage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: context.primaryColor,
         onPressed: () {},
         label: Text(
           'Save task',
