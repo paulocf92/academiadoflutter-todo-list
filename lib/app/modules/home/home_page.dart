@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: context.primaryColor),
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xFFFAFBFE),
         elevation: 0,
         actions: [
           PopupMenuButton(
