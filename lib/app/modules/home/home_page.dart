@@ -8,7 +8,13 @@ import 'package:todo_list_provider/app/modules/home/widgets/home_tasks.dart';
 import 'package:todo_list_provider/app/modules/home/widgets/home_week_filter.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  // The context in StatelessWidgets is required if accessing it is necessary for a method
+  // It's automatically available in StatefulWidgets
+  void _goToCreateTask(BuildContext context) {
+    Navigator.of(context).pushNamed('/task/create');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +33,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => _goToCreateTask(context),
         child: const Icon(Icons.add),
       ),
       backgroundColor: const Color(0xFFFAFBFE),
