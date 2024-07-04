@@ -7,12 +7,15 @@ class TodoCardFilter extends StatelessWidget {
   final String label;
   final TaskFilterEnum taskFilter;
   final TotalTasksModel? totalTasksModel;
+  final bool selected;
 
-  const TodoCardFilter(
-      {super.key,
-      required this.label,
-      required this.taskFilter,
-      this.totalTasksModel});
+  const TodoCardFilter({
+    super.key,
+    required this.label,
+    required this.taskFilter,
+    required this.selected,
+    this.totalTasksModel,
+  });
 
   double _getPercentFinished() {
     final total = totalTasksModel?.totalTasks ?? 0;
@@ -36,7 +39,7 @@ class TodoCardFilter extends StatelessWidget {
       margin: EdgeInsets.only(right: 10),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: context.primaryColor,
+        color: selected ? context.primaryColor : Colors.white,
         border: Border.all(width: 1, color: Colors.grey.withOpacity(.8)),
         borderRadius: BorderRadius.circular(30),
       ),
@@ -45,13 +48,18 @@ class TodoCardFilter extends StatelessWidget {
         children: [
           Text(
             '${totalTasksModel?.totalTasks ?? 0} TASKS',
-            style:
-                context.titleStyle.copyWith(fontSize: 10, color: Colors.white),
+            style: context.titleStyle.copyWith(
+              fontSize: 10,
+              color: selected ? Colors.white : Colors.grey,
+            ),
           ),
           Text(
             label,
-            style: const TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: selected ? Colors.white : Colors.black,
+            ),
           ),
           TweenAnimationBuilder<double>(
             tween: Tween(
@@ -61,8 +69,11 @@ class TodoCardFilter extends StatelessWidget {
             duration: const Duration(seconds: 1),
             builder: (context, value, child) {
               return LinearProgressIndicator(
-                backgroundColor: context.primaryColorLight,
-                valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                backgroundColor:
+                    selected ? context.primaryColorLight : Colors.grey.shade300,
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  selected ? Colors.white : context.primaryColor,
+                ),
                 value: value,
               );
             },
