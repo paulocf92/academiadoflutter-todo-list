@@ -1,31 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_provider/app/core/ui/theme_extensions.dart';
+import 'package:todo_list_provider/app/models/task_filter_enum.dart';
+import 'package:todo_list_provider/app/models/total_tasks_model.dart';
 import 'package:todo_list_provider/app/modules/home/widgets/todo_card_filter.dart';
 
-class HomeFilters extends StatefulWidget {
+class HomeFilters extends StatelessWidget {
   const HomeFilters({super.key});
 
-  @override
-  State<HomeFilters> createState() => _HomeFiltersState();
-}
-
-class _HomeFiltersState extends State<HomeFilters> {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('FILTERS', style: context.titleStyle),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              TodoCardFilter(),
-              TodoCardFilter(),
-              TodoCardFilter(),
-              TodoCardFilter(),
-              TodoCardFilter(),
+              TodoCardFilter(
+                label: 'TODAY',
+                taskFilter: TaskFilterEnum.today,
+                totalTasksModel:
+                    TotalTasksModel(totalTasks: 20, totalTasksFinished: 10),
+              ),
+              TodoCardFilter(
+                label: 'TOMORROW',
+                taskFilter: TaskFilterEnum.tomorrow,
+                totalTasksModel:
+                    TotalTasksModel(totalTasks: 10, totalTasksFinished: 5),
+              ),
+              TodoCardFilter(
+                label: 'WEEK',
+                taskFilter: TaskFilterEnum.week,
+                totalTasksModel:
+                    TotalTasksModel(totalTasks: 10, totalTasksFinished: 5),
+              ),
             ],
           ),
         ),
