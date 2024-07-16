@@ -36,9 +36,6 @@ class _RegisterPageState extends State<RegisterPage> {
         changeNotifier: context.read<RegisterController>());
     defaultListener.listener(
       context: context,
-      successCallback: (notifier, listenerInstance) {
-        Navigator.of(context).pop();
-      },
       errorCallback: (notifier, listenerInstance) {
         print('An error occurred!');
       },
