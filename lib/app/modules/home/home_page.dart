@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_list_provider/app/core/notifier/default_listener_notifier.dart';
 
 import 'package:todo_list_provider/app/core/ui/theme_extensions.dart';
@@ -76,8 +77,16 @@ class _HomePageState extends State<HomePage> {
         actions: [
           PopupMenuButton(
             icon: const Icon(TodoListIcons.filter),
+            onSelected: (value) {
+              widget._homeController.showOrHideFinishedTasks();
+            },
             itemBuilder: (_) => [
-              const PopupMenuItem<bool>(child: Text('Show finished tasks')),
+              PopupMenuItem<bool>(
+                value: true,
+                child: Text(widget._homeController.showFinishedTasks
+                    ? 'Hide finished tasks'
+                    : 'Show finished tasks'),
+              ),
             ],
           )
         ],
