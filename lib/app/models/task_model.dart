@@ -15,7 +15,7 @@ class TaskModel {
     return TaskModel(
       id: task['id'],
       description: task['description'],
-      dateTime: DateTime.parse(task['dateTime']),
+      dateTime: DateTime.parse(task['date_time']),
       finished: task['finished'] == 1,
     );
   }
