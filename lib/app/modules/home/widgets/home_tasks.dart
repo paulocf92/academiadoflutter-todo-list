@@ -31,7 +31,7 @@ class HomeTasks extends StatelessWidget {
                 .select<HomeController, List<TaskModel>>(
                   (controller) => controller.filteredTasks,
                 )
-                .map((task) => Task())
+                .map((task) => Task(model: task))
                 .toList(),
           )
         ],
