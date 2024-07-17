@@ -41,4 +41,8 @@ class TasksServiceImpl implements TasksService {
     return WeekTaskModel(
         startDate: startFilter, endDate: endFilter, tasks: tasks);
   }
+
+  @override
+  Future<void> toggleTaskCompletion(TaskModel task) =>
+      _tasksRepository.toggleTaskCompletion(task);
 }

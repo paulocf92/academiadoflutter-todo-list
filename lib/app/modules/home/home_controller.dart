@@ -103,4 +103,16 @@ class HomeController extends DefaultChangeNotifier {
     await loadTotalTasks();
     notifyListeners();
   }
+
+  Future<void> toggleTaskCompletion(TaskModel task) async {
+    showLoadingAndResetState();
+    notifyListeners();
+
+    final taskUpdate = task.copyWith(finished: !task.finished);
+
+    await _tasksService.toggleTaskCompletion(taskUpdate);
+
+    hideLoading();
+    refreshPage();
+  }
 }
