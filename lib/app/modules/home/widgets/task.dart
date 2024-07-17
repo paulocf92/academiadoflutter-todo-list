@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_provider/app/core/ui/theme_extensions.dart';
 
 class Task extends StatelessWidget {
   const Task({super.key});
