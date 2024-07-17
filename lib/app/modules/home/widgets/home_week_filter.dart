@@ -35,6 +35,9 @@ class HomeWeekFilter extends StatelessWidget {
                   monthTextStyle: const TextStyle(fontSize: 8),
                   dayTextStyle: const TextStyle(fontSize: 13),
                   dateTextStyle: const TextStyle(fontSize: 13),
+                  onDateChange: (date) {
+                    context.read<HomeController>().filterByDay(date);
+                  },
                 );
               },
             ),
