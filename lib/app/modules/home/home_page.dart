@@ -40,8 +40,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   // The context in StatelessWidgets is required if accessing it is necessary for a method
-  void _goToCreateTask(BuildContext context) {
-    Navigator.of(context).push(
+  Future<void> _goToCreateTask(BuildContext context) async {
+    await Navigator.of(context).push(
       PageRouteBuilder(
         // Animation play duration
         transitionDuration: const Duration(milliseconds: 400),
@@ -62,6 +62,8 @@ class _HomePageState extends State<HomePage> {
         },
       ),
     );
+
+    widget._homeController.refreshPage();
   }
 
   @override

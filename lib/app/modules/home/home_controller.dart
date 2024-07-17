@@ -72,4 +72,10 @@ class HomeController extends DefaultChangeNotifier {
     hideLoading();
     notifyListeners();
   }
+
+  Future<void> refreshPage() async {
+    await findTasks(filter: selectedFilter);
+    await loadTotalTasks();
+    notifyListeners();
+  }
 }
