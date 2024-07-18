@@ -5,4 +5,5 @@ abstract interface class TasksRepository {
   Future<List<TaskModel>> findByPeriod(DateTime start, DateTime end);
   Future<void> toggleTaskCompletion(TaskModel task);
   Future<void> deleteAll();
+  Future<void> delete(int id);
 }

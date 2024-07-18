@@ -126,4 +126,9 @@ class HomeController extends DefaultChangeNotifier {
     showFinishedTasks = !showFinishedTasks;
     refreshPage();
   }
+
+  void deleteTask(int id) async {
+    await _tasksService.delete(id);
+    refreshPage();
+  }
 }

@@ -48,4 +48,7 @@ class TasksServiceImpl implements TasksService {
 
   @override
   Future<void> deleteAll() => _tasksRepository.deleteAll();
+
+  @override
+  Future<void> delete(int id) => _tasksRepository.delete(id);
 }
