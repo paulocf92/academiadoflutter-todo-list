@@ -37,12 +37,12 @@ class TodoCardFilter extends StatelessWidget {
       onTap: () => context.read<HomeController>().findTasks(filter: taskFilter),
       borderRadius: BorderRadius.circular(30),
       child: Container(
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           minHeight: 120,
           maxWidth: 170,
         ),
-        margin: EdgeInsets.only(right: 10),
-        padding: EdgeInsets.all(20),
+        margin: const EdgeInsets.only(right: 10),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: selected ? context.primaryColor : Colors.white,
           border: Border.all(width: 1, color: Colors.grey.withOpacity(.8)),
@@ -52,7 +52,7 @@ class TodoCardFilter extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${totalTasksModel?.totalTasks ?? 0} TASKS',
+              '${totalTasksModel?.unfinishedTasks ?? 0} TASKS',
               style: context.titleStyle.copyWith(
                 fontSize: 10,
                 color: selected ? Colors.white : Colors.grey,
