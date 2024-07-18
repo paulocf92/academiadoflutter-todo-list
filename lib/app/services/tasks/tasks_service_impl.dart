@@ -45,4 +45,7 @@ class TasksServiceImpl implements TasksService {
   @override
   Future<void> toggleTaskCompletion(TaskModel task) =>
       _tasksRepository.toggleTaskCompletion(task);
+
+  @override
+  Future<void> deleteAll() => _tasksRepository.deleteAll();
 }

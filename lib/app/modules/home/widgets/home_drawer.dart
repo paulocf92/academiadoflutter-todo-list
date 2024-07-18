@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:todo_list_provider/app/core/auth/auth_provider.dart';
 import 'package:todo_list_provider/app/core/ui/messages.dart';
 import 'package:todo_list_provider/app/core/ui/theme_extensions.dart';
+import 'package:todo_list_provider/app/services/tasks/tasks_service.dart';
 import 'package:todo_list_provider/app/services/user/user_service.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -87,7 +88,10 @@ class HomeDrawer extends StatelessWidget {
             title: const Text('Change name'),
           ),
           ListTile(
-            onTap: () => context.read<AuthProvider>().logout(),
+            onTap: () {
+              context.read<TasksService>().deleteAll();
+              context.read<AuthProvider>().logout();
+            },
             title: const Text('Exit'),
           ),
         ],

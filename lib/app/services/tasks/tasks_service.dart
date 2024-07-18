@@ -7,4 +7,5 @@ abstract interface class TasksService {
   Future<List<TaskModel>> getTomorrow();
   Future<WeekTaskModel> getWeek();
   Future<void> toggleTaskCompletion(TaskModel task);
+  Future<void> deleteAll();
 }
